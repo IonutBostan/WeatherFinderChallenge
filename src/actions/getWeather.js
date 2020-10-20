@@ -7,6 +7,11 @@ export default async e => {
   const api_call = await fetch(
     `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${REACT_APP_OPENWEATHERMAP_API_KEY}&units=metric`
   );
+  if (!api_call.ok) {
+    return {
+      error: `An error has occured: ${api_call.status}`
+    };
+  }
   const data = await api_call.json();
   if (city && country) {
     return {

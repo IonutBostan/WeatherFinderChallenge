@@ -12,6 +12,11 @@ export default class App extends React.Component {
     description: undefined,
     error: undefined
   };
+  getWeather = async ev => {
+    ev.preventDefault();
+    const weather = await getWeather(ev);
+    this.setState({ ...weather });
+  };
   render() {
     return (
       <div>
@@ -28,7 +33,7 @@ export default class App extends React.Component {
                   </div>
                 </div>
                 <div className="col-7 form-container">
-                  <form onSubmit={getWeather}>
+                  <form onSubmit={this.getWeather}>
                     <input type="text" name="city" placeholder="Madrid" />
                     <input type="text" name="country" placeholder="es" />
                     <button>Get Weather</button>
