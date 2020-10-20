@@ -5,6 +5,7 @@ import getWeatherAction from "../actions/getWeather";
 import AppTitle from "./AppTitle";
 import WeatherForm from "./WeatherForm";
 import WeatherInfo from "./WeatherInfo";
+import ErrorBoundary from "./ErrorBoundary";
 
 const App = () => {
   const [weather, setWeather] = useState({
@@ -23,25 +24,27 @@ const App = () => {
   };
 
   return (
-    <div>
-      <div className="wrapper">
-        <div className="main">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-5 title-container">
-                <div>
-                  <AppTitle />
+    <ErrorBoundary>
+      <div>
+        <div className="wrapper">
+          <div className="main">
+            <div className="container-fluid">
+              <div className="row">
+                <div className="col-5 title-container">
+                  <div>
+                    <AppTitle />
+                  </div>
                 </div>
-              </div>
-              <div className="col-7 form-container">
-                <WeatherForm onSubmit={getWeather} />
-                <WeatherInfo info={weather} />
+                <div className="col-7 form-container">
+                  <WeatherForm onSubmit={getWeather} />
+                  <WeatherInfo info={weather} />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </ErrorBoundary>
   );
 };
 
