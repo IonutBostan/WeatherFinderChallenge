@@ -1,11 +1,13 @@
 const { REACT_APP_OPENWEATHERMAP_API_KEY } = process.env;
 
-export default async e => {
-  e.preventDefault();
-  const city = e.target.elements.city.value || "Madrid";
-  const country = e.target.elements.country.value || "es";
+export default async (elements, options = {}) => {
+  const city = (elements && elements.city && elements.city.value) || "Madrid";
+  const country =
+    (elements && elements.country && elements.country.value) || "es";
+  const { apiKey } = options;
   const api_call = await fetch(
-    `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${REACT_APP_OPENWEATHERMAP_API_KEY}&units=metric`
+    `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey ||
+      REACT_APP_OPENWEATHERMAP_API_KEY}&units=metric`
   );
   if (!api_call.ok) {
     return {

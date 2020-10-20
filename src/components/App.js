@@ -17,7 +17,8 @@ export default class App extends React.Component {
   };
   getWeather = async ev => {
     ev.preventDefault();
-    const weather = await getWeather(ev);
+    const elements = ev.target.elements;
+    const weather = await getWeather(elements);
     this.setState({ ...weather });
   };
   render() {
