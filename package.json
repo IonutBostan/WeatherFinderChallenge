@@ -3,16 +3,15 @@
   "version": "0.1.0",
   "private": false,
   "dependencies": {
-    "bootstrap": "4.5.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "bootstrap": "4.5.3",
+    "react": "17.0.0",
+    "react-dom": "17.0.0",
     "react-scripts": "^3.4.4"
   },
   "scripts": {
-    "ci": "react-scripts test  --passWithNoTests",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jsdom --passWithNoTests",
     "eject": "react-scripts eject"
   },
   "browserslist": {
